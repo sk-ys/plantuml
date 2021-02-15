@@ -1,5 +1,3 @@
-require_dependency 'redmine/wiki_formatting/textile/helper'
-
 module PlantumlHelperPatch
   def self.included(base) # :nodoc:
     base.send(:prepend, HelperMethodsWikiExtensions)
