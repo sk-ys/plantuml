@@ -39,4 +39,9 @@ Rails.configuration.to_prepare do
   unless Redmine::WikiFormatting::Textile::Helper.included_modules.include? PlantumlHelperPatch
     Redmine::WikiFormatting::Textile::Helper.send(:include, PlantumlHelperPatch)
   end
+  if (Redmine::VERSION::MAJOR == 3 && Redmine::VERSION::MINOR >= 1) || Redmine::VERSION::MAJOR >= 4
+    unless Redmine::WikiFormatting::Markdown::Helper.included_modules.include? PlantumlHelperPatch
+      Redmine::WikiFormatting::Markdown::Helper.send(:include, PlantumlHelperPatch)
+    end
+  end
 end
