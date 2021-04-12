@@ -27,7 +27,12 @@ EOF
       raise 'No or bad arguments.' if args.size != 1
       frmt = PlantumlHelper.check_format(args.first)
       image = PlantumlHelper.plantuml(text, args.first)
-      image_tag "/plantuml/#{frmt[:type]}/#{image}#{frmt[:ext]}"
+
+      if Regexp.compile("^http").match(image)
+        image_tag image
+      else
+        image_tag "/plantuml/#{frmt[:type]}/#{image}#{frmt[:ext]}"
+      end
     end
   end
 end

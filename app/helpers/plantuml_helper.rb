@@ -1,4 +1,5 @@
 require 'digest/sha2'
+require 'uri'
 
 module PlantumlHelper
   ALLOWED_FORMATS = {
@@ -19,6 +20,16 @@ module PlantumlHelper
   end
 
   def self.plantuml(text, args)
+    settings_binary = Setting.plugin_plantuml['plantuml_binary_default']
+    if Regexp.compile("^http").match(settings_binary)
+      name = plantuml_server(text, args)
+    else
+      name = plantuml_local(text, args)
+    end
+    name
+  end
+
+  def self.plantuml_local(text, args)
     frmt = check_format(args)
     name = construct_cache_key(sanitize_plantuml(text))
     settings_binary = Setting.plugin_plantuml['plantuml_binary_default']
@@ -35,9 +46,23 @@ module PlantumlHelper
     name
   end
 
+  def self.plantuml_server(text, args)
+    frmt = check_format(args)
+    name = construct_cache_key(sanitize_plantuml(text))
+    text_encoded = encode(text)
+    server_url = Setting.plugin_plantuml['plantuml_binary_default']
+
+    url = URI.join(server_url, "/#{frmt[:type]}/#{text_encoded}").to_s
+  end
+
   def self.sanitize_plantuml(text)
     return text if Setting.plugin_plantuml['allow_includes']
     text.gsub!(/!include.*$/, '')
     text
+  end
+
+  def self.encode(text)
+    require 'plantuml-encode64'
+    PlantUmlEncode64.new(sanitize_plantuml(text)).encode.to_s
   end
 end
