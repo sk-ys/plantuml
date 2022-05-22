@@ -1,5 +1,8 @@
 en:
   plugin_settings: 'Plugin settings'
   cache_expiration: 'Cache expiration time'
-  plantuml_binary: 'PlantUML binary'
-  allow_includes: 'Allow !include (ATTENTION! Security risk)'
+  plantuml_path: 'PlantUML binary / URL'
+  allow_includes: 'Allow !include'
+  label_allow_includes_note: 'ATTENTION! Security risk. Valid only when using binary.'
+  label_cache_seconds_note: 'Valid only when using binary'
+  label_plantuml_path_example: 'Example'

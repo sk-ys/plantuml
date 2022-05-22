@@ -3,13 +3,23 @@
   <p>
     <label><%= l(:allow_includes) %></label>
     <%= check_box_tag 'settings[allow_includes]', 1, @settings['allow_includes'] %>
-  </p> <p>
-    <label><%= l(:cache_expiration) %></label>
-    <%= text_field_tag 'settings[cache_seconds]', @settings['cache_seconds'], size: 10, disabled: true %> seconds
+    <em class="info">
+      <%= l(:label_allow_includes_note) %>
+    </em>
   </p>
   <p>
-    <label><%= l(:plantuml_binary) %></label>
-    <%= text_field_tag 'settings[plantuml_binary_default]', @settings['plantuml_binary_default'], size: 60 %>
+    <label><%= l(:cache_expiration) %></label>
+    <%= text_field_tag 'settings[cache_seconds]', @settings['cache_seconds'], size: 10, disabled: true %> seconds
+    <em class="info">
+      <%= l(:label_cache_seconds_note) %>
+    </em>
+  </p>
+  <p>
+    <label><%= l(:plantuml_path) %></label>
+    <%= text_field_tag 'settings[plantuml_path]', @settings['plantuml_path'] ? @settings['plantuml_path'] : @settings['plantuml_binary_default'], size: 60 %>
+    <em class="info">
+      <%= l(:label_plantuml_path_example) %>: /usr/bin/plantuml or http://www.plantuml.com/plantuml/
+    </em>
   </p>
 
 </fieldset>

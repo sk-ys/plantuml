@@ -1,5 +1,8 @@
 ja:
   plugin_settings: 'プラグインの設定'
   cache_expiration: 'キャッシュの有効期限'
-  plantuml_binary: 'PlantUMLのパス'
-  allow_includes: '!includeを許可する(注意!:セキュリティリスク上のリスクがあります)'
+  plantuml_path: 'PlantUMLのバイナリパス / URL'
+  allow_includes: '!includeを許可する'
+  label_allow_includes_note: '注意!:セキュリティリスク上のリスクがあります。バイナリ使用時のみ有効。'
+  label_cache_seconds_note: 'バイナリ使用時のみ有効'
+  label_plantuml_path_example: '例'
