@@ -12,19 +12,17 @@ Redmine::Plugin.register :plantuml do
 
   Redmine::WikiFormatting::Macros.register do
     desc <<EOF
-      Render PlantUML image.
-      <pre>
-      {{plantuml(png)
-      (Bob -> Alice : hello)
-      }}
-      </pre>
+Render PlantUML image.
+{{plantuml(png)
+(Bob -> Alice : hello)
+}}
 
-      Available options are:
-      ** (png|svg)
+Available options are:
+** (png|svg)
 EOF
     macro :plantuml do |obj, args, text|
       copy_old_setting
-      raise 'No PlantUML binary set.' if Setting.plugin_plantuml['plantuml_path'].blank?
+      raise 'No PlantUML path set.' if Setting.plugin_plantuml['plantuml_path'].blank?
       raise 'No or bad arguments.' if args.size != 1
       frmt = PlantumlHelper.check_format(args.first)
       image = PlantumlHelper.plantuml(text, args.first)
