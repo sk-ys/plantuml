@@ -3,7 +3,7 @@ module PlantumlHelperPatch
     base.send(:prepend, HelperMethodsWikiExtensions)
 
     base.class_eval do
-      unloadable # Send unloadable so it will not be unloaded in development
+      # unloadable  # Remove for Redmine 6.0 or Rails 7, as unloadable is no longer supported.
       if Rails.version < '5.0.0'
         alias_method_chain :heads_for_wiki_formatter, :redmine_plantuml
       else
