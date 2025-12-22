@@ -3,6 +3,7 @@ ja:
   cache_expiration: 'キャッシュの有効期限'
   plantuml_path: 'PlantUMLのバイナリパス / URL'
   allow_includes: '!includeを許可する'
+  label_use_object_tag_for_svg: 'SVG画像に<object>タグを使用する'
   label_allow_includes_note: '注意!:セキュリティリスク上のリスクがあります。バイナリ使用時のみ有効。'
   label_cache_seconds_note: 'バイナリ使用時のみ有効'
   label_plantuml_path_example: '例'

@@ -8,6 +8,10 @@
     </em>
   </p>
   <p>
+    <label><%= l(:label_use_object_tag_for_svg) %></label>
+    <%= check_box_tag 'settings[use_object_tag_for_svg]', 1, @settings['use_object_tag_for_svg'] %>
+  </p>
+  <p>
     <label><%= l(:cache_expiration) %></label>
     <%= text_field_tag 'settings[cache_seconds]', @settings['cache_seconds'], size: 10, disabled: true %> seconds
     <em class="info">
