@@ -3,6 +3,7 @@ en:
   cache_expiration: 'Cache expiration time'
   plantuml_path: 'PlantUML binary / URL'
   allow_includes: 'Allow !include'
+  label_use_object_tag_for_svg: 'Use <object> tag for SVG images'
   label_allow_includes_note: 'ATTENTION! Security risk. Valid only when using binary.'
   label_cache_seconds_note: 'Valid only when using binary'
   label_plantuml_path_example: 'Example'

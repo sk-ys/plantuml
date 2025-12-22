@@ -8,7 +8,12 @@ Redmine::Plugin.register :plantuml do
   requires_redmine version: '2.6'..'6'
 
   settings(partial: 'settings/plantuml',
-           default: { 'plantuml_path' => {}, 'cache_seconds' => '0', 'allow_includes' => false })
+           default: {
+            'plantuml_path' => {},
+            'cache_seconds' => '0',
+            'allow_includes' => false,
+            'use_object_tag_for_svg' => true
+          })
 
   Redmine::WikiFormatting::Macros.register do
     desc <<EOF
@@ -28,7 +33,11 @@ EOF
       image = PlantumlHelper.plantuml(text, args.first)
 
       if Regexp.compile("^http").match(image)
-        image_tag image
+        if frmt[:type] == 'svg' && Setting.plugin_plantuml['use_object_tag_for_svg']
+          content_tag(:object, '', data: image, type: 'image/svg+xml')
+        else
+          image_tag image
+        end
       else
         image_tag "/plantuml/#{frmt[:type]}/#{image}#{frmt[:ext]}"
       end

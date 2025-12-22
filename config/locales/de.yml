@@ -3,6 +3,7 @@ de:
   cache_expiration: 'Cache Gültigkeit'
   plantuml_path: 'PlantUML Binärdatei / URL'
   allow_includes: 'Includes zulassen'
+  label_use_object_tag_for_svg: 'Verwenden Sie das <object>-Tag für SVG-Bilder'
   label_allow_includes_note: 'ACHTUNG! Sicherheitsrisiko. Gültig nur bei Verwendung von binäre.'
   label_cache_seconds_note: 'Gültig nur bei Verwendung von binäre'
   label_plantuml_path_example: 'Beispiel'
