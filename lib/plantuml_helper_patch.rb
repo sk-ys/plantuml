@@ -37,3 +37,21 @@ module HelperMethodsWikiExtensions
     end
   end
 end
+
+unless Redmine::WikiFormatting::Textile::Helper.included_modules.include? PlantumlHelperPatch
+  Redmine::WikiFormatting::Textile::Helper.send(:include, PlantumlHelperPatch)
+end
+
+if (Redmine::VERSION::MAJOR == 3 && Redmine::VERSION::MINOR >= 1) || Redmine::VERSION::MAJOR >= 4
+  if Redmine::VERSION::MAJOR < 6
+    unless Redmine::WikiFormatting::Markdown::Helper.included_modules.include? PlantumlHelperPatch
+      Redmine::WikiFormatting::Markdown::Helper.send(:include, PlantumlHelperPatch)
+    end
+  end
+end
+
+if Redmine::VERSION::MAJOR >= 5
+  unless Redmine::WikiFormatting::CommonMark::Helper.included_modules.include? PlantumlHelperPatch
+    Redmine::WikiFormatting::CommonMark::Helper.send(:include, PlantumlHelperPatch)
+  end
+end
